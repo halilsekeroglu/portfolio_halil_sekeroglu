@@ -4,9 +4,9 @@ from starlette.middleware.cors import CORSMiddleware
 import os
 import logging
 from pathlib import Path
-from .database import init_database, close_database
-from .routes.contact import router as contact_router
-from .routes.portfolio import router as portfolio_router
+from database import init_database, close_database
+from routes.contact import router as contact_router
+from routes.portfolio import router as portfolio_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
