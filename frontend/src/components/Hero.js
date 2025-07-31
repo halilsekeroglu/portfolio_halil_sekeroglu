@@ -6,7 +6,7 @@ const Hero = ({ data }) => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if (geometryRef.current) {
+      if (geometryRef.current && window.innerWidth > 768) { // Only on desktop
         const { clientX, clientY } = e;
         const { innerWidth, innerHeight } = window;
         const xRotation = (clientY / innerHeight - 0.5) * 10;
@@ -29,12 +29,12 @@ const Hero = ({ data }) => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
       {/* 3D Animated Geometry */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
           ref={geometryRef}
-          className="w-96 h-96 opacity-5 transition-transform duration-300 ease-out"
+          className="w-64 h-64 md:w-96 md:h-96 opacity-5 transition-transform duration-300 ease-out"
           style={{
             background: `linear-gradient(45deg, transparent 40%, #000 40%, #000 60%, transparent 60%),
                         linear-gradient(-45deg, transparent 40%, #000 40%, #000 60%, transparent 60%)`,
@@ -45,21 +45,21 @@ const Hero = ({ data }) => {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-light mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-light mb-6 tracking-tight leading-tight">
             {data.name}
           </h1>
           
-          <p className="text-xl md:text-2xl font-light text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed px-4">
             {data.title}
           </p>
           
-          <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed px-4">
             {data.subtitle}
           </p>
 
           <button
             onClick={scrollToAbout}
-            className="inline-flex items-center space-x-2 px-8 py-3 border border-black hover:bg-black hover:text-white transition-all duration-300 hover:transform hover:scale-105"
+            className="inline-flex items-center space-x-2 px-6 md:px-8 py-3 border border-black hover:bg-black hover:text-white transition-all duration-300 hover:transform hover:scale-105 text-sm md:text-base"
           >
             <span>Explore My Work</span>
             <ArrowDown size={16} />
