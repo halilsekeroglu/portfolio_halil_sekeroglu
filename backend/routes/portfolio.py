@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from typing import List, Optional
-from ..models import Project, Experience, TechnicalExpertise
-from ..database import projects, experiences, technical_expertise
+from models import Project, Experience, TechnicalExpertise
+from database import projects, experiences, technical_expertise
 import logging
 
 logger = logging.getLogger(__name__)
