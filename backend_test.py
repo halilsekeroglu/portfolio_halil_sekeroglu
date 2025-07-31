@@ -442,14 +442,15 @@ class APITester:
 
         # Test CORS headers are present
         try:
-            response = requests.options(f"{API_BASE_URL}/", timeout=10)
+            response = requests.get(f"{API_BASE_URL}/", 
+                                  headers={"Origin": "http://localhost:3000"}, 
+                                  timeout=10)
             cors_headers = {
                 "Access-Control-Allow-Origin": response.headers.get("Access-Control-Allow-Origin"),
-                "Access-Control-Allow-Methods": response.headers.get("Access-Control-Allow-Methods"),
-                "Access-Control-Allow-Headers": response.headers.get("Access-Control-Allow-Headers")
+                "Access-Control-Allow-Credentials": response.headers.get("Access-Control-Allow-Credentials")
             }
             
-            if any(cors_headers.values()):
+            if cors_headers["Access-Control-Allow-Origin"]:
                 self.log_test("CORS Headers Validation", True, 
                             f"CORS headers present: {cors_headers}")
             else:
