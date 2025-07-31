@@ -83,12 +83,12 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 bg-white/95 backdrop-blur-md rounded-lg">
+          <div className="md:hidden mt-4 py-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg border">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 transition-colors duration-300"
+                className="block w-full text-left px-4 py-3 text-sm hover:bg-gray-50 transition-colors duration-300 border-b border-gray-100 last:border-b-0"
               >
                 {item.label}
               </button>
