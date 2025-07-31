@@ -10,8 +10,20 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleResize = () => {
+      // Close mobile menu on resize to desktop
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
