@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from typing import List
-from ..models import ContactMessage, ContactMessageCreate, ContactMessageResponse
-from ..database import contact_messages
+from models import ContactMessage, ContactMessageCreate, ContactMessageResponse
+from database import contact_messages
 import logging
 
 logger = logging.getLogger(__name__)
