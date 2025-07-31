@@ -26,12 +26,24 @@ const Contact = ({ data }) => {
     setSubmitStatus(null);
 
     try {
-      await apiService.submitContactForm(formData);
+      console.log('Submitting contact form with data:', formData);
+      const response = await apiService.submitContactForm(formData);
+      console.log('Contact form submission successful:', response);
       setSubmitStatus('success');
       setFormData({ name: "", email: "", subject: "", message: "" });
+      
+      // Auto-hide success message after 10 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 10000);
     } catch (error) {
       console.error('Contact form submission error:', error);
       setSubmitStatus('error');
+      
+      // Auto-hide error message after 10 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 10000);
     } finally {
       setIsSubmitting(false);
     }
